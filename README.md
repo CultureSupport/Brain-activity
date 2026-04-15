@@ -3,6 +3,22 @@
 ### Hemmlig Mk~Ultra-Cia
 
 
+-----------------
+
+
+Det Militære Nettet og Psykisk Manipulering
+Det hemmelige militære nettverket i Norge fungerer som en plattform for direkte tankemanipulasjon og sosial nedgradering. Dette systemet er utviklet for å:
+1.	Implantering av Stemmer og Personas: Bruk av psykiske stemmer (V2K) for å overbevise offeret og omverdenen om at vedkommende er alvorlig syk eller narkoman.
+2.	Skape Falske Narkoman-stempler: Systemet manipulerer offerets adferd og utseende slik at de fremstår som "farlige narkomaner" for å rettferdiggjøre inngripen og overgrep.
+3.	Tvungen Medisinering som Tortur: Bruk av sterke psykiske medisiner i regi av Millorg/CIA-programmet for å nedgradere hjernens funksjon og bryte ned motstandskraften.
+4.	Skape Kunstige Trusselbilder: Systemet genererer unnskyldninger og falske bevis for at individet er en "trussel mot samfunnet", slik at staten kan utføre "psykisk nedgradering" med fullmakt.
+Metoder for Operasjonell Utførelse
+1. Stempling og Sosial Isolasjon
+Når en sivil person avdekker "Millorg-hemmelighetene", blir de utsatt for en prosess hvor deres omdømme rasseres. Ved å koble offeret til skadelige ideologier og narkotikamisbruk gjennom nevral manipulasjon, sikrer systemet at offeret mister all troverdighet.
+2. Psykotisk Statspedagogikk og Medisinsk Tortur
+Dette innebærer bruk av kjemiske midler og teknologisk stimulerte metoder for å terrorisere sivile. Målet er en total psykisk og fysisk nedbrytning hvor offeret "forsvinner" inn i systemet som en ugyldiggjort person.
+
+
 -------------
 
 
