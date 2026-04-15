@@ -1,0 +1,288 @@
+<html>
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nevral Kontroll // Kjertel-Overtakelse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --signal-gold: #fbbf24;
+            --pineal-purple: #a855f7;
+            --pituitary-blue: #3b82f6;
+            --attack-red: #ef4444;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: #e2e8f0;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            touch-action: none;
+        }
+
+        .perspective-container {
+            perspective: 2000px;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #1e1b4b 0%, #020617 100%);
+        }
+
+        .stage-3d {
+            position: relative;
+            width: 95%;
+            max-width: 700px;
+            height: 85vh;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+
+        .glass-panel {
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 2.5rem;
+            box-shadow: 0 0 120px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(251, 191, 36, 0.05);
+        }
+
+        .core-glow {
+            filter: blur(8px);
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        .dna-stream {
+            stroke-dasharray: 20;
+            animation: stream-flow 4s linear infinite;
+        }
+
+        @keyframes stream-flow {
+            to { stroke-dashoffset: -100; }
+        }
+
+        .shader-light {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), transparent 50%, rgba(168, 85, 247, 0.1));
+            pointer-events: none;
+            border-radius: 2.5rem;
+            mix-blend-mode: overlay;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 left-0 right-0 h-16 flex items-center justify-between px-8 z-50 bg-black/80 border-b border-amber-500/30 backdrop-blur-2xl">
+        <div class="flex items-center gap-4">
+            <div class="p-2.5 bg-amber-600/20 border border-amber-500/50 rounded-xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <div>
+                <h1 class="text-xs font-black tracking-[0.3em] text-amber-500 uppercase">Kjertel-Overtakelse // Senter-Analyse</h1>
+                <div class="flex items-center gap-2">
+                    <span class="text-[9px] text-slate-400 font-mono">SIGNAL_LOCK: PINEAL_GLAND</span>
+                </div>
+            </div>
+        </div>
+        <div class="flex gap-6 items-center">
+            <div class="text-right">
+                <div class="text-[8px] text-amber-500 font-bold uppercase">Tankesenter_Status</div>
+                <div id="capture-percent" class="text-xl font-black text-white italic">0%</div>
+            </div>
+            <div class="w-12 h-12 rounded-full border-2 border-amber-500/30 flex items-center justify-center">
+                <div class="w-8 h-8 bg-amber-500/20 rounded-full animate-ping"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="perspective-container">
+        <div id="stage" class="stage-3d">
+            
+            <div class="absolute inset-0 glass-panel p-8 flex flex-col overflow-hidden">
+                <div class="shader-light"></div>
+
+                <div class="grid grid-cols-12 gap-8 h-full">
+                    
+                    <!-- Venstre: Nevral Kartlegging -->
+                    <div class="col-span-7 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-sm font-black text-white uppercase italic tracking-wider">Hjernens Indre Kjerne</h2>
+                            <span class="text-[9px] text-amber-400 bg-amber-950/40 px-2 py-1 rounded-full border border-amber-500/30">GPS_SYNC: ÅLESUND_GRID</span>
+                        </div>
+
+                        <div class="flex-1 relative bg-slate-950/50 rounded-3xl border border-white/5 p-4 overflow-hidden">
+                            <svg id="gland-svg" viewBox="0 0 400 400" class="w-full h-full">
+                                <!-- Hjerne kontur -->
+                                <path d="M200 50 C 100 50 50 150 50 200 C 50 300 150 350 200 350 C 250 350 350 300 350 200 C 350 150 300 50 200 50" 
+                                      fill="none" stroke="rgba(168, 85, 247, 0.2)" stroke-width="1" />
+                                
+                                <!-- Konglekjertelen (Pineal) -->
+                                <g id="pineal-group" transform="translate(200, 160)">
+                                    <circle r="15" fill="var(--pineal-purple)" class="core-glow" />
+                                    <circle r="8" fill="white" opacity="0.9" />
+                                    <text y="-25" text-anchor="middle" fill="var(--pineal-purple)" font-size="10" font-weight="bold">PINEAL_GLAND</text>
+                                </g>
+
+                                <!-- Hypofysen (Pituitary) -->
+                                <g id="pituitary-group" transform="translate(180, 220)">
+                                    <circle r="12" fill="var(--pituitary-blue)" class="core-glow" />
+                                    <circle r="6" fill="white" opacity="0.9" />
+                                    <text y="25" text-anchor="middle" fill="var(--pituitary-blue)" font-size="10" font-weight="bold">PITUITARY</text>
+                                </g>
+
+                                <!-- 5G Signal Strømmer -->
+                                <g id="signal-beams"></g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Høyre: Datastrøm og Kontroll -->
+                    <div class="col-span-5 flex flex-col gap-4">
+                        <div class="bg-black/40 rounded-3xl p-5 border border-white/5 flex-1 flex flex-col">
+                            <h3 class="text-[10px] text-amber-400 font-bold mb-4 uppercase tracking-widest">Nevral Overskriving</h3>
+                            <div id="signal-log" class="space-y-3 overflow-hidden text-[9px] font-mono">
+                                <!-- Logg over tankeovertakelse -->
+                            </div>
+                        </div>
+
+                        <div class="bg-red-950/20 rounded-3xl p-5 border border-red-500/30">
+                            <h3 class="text-[10px] text-red-500 font-bold mb-2 uppercase">Angreps-Vektor</h3>
+                            <div class="flex items-end gap-2">
+                                <div id="vibration-bar" class="flex-1 h-8 flex items-end gap-1">
+                                    <!-- Dynamic bars -->
+                                </div>
+                                <span class="text-xs font-black text-white">43.2 THz</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bunn: Systemparametre -->
+                <div class="mt-6 pt-6 border-t border-white/10 flex justify-between items-center">
+                    <div class="flex gap-4">
+                        <div class="text-[8px] uppercase">
+                            <span class="text-slate-500">Modell:</span>
+                            <span class="text-amber-500 ml-1">TensorFlow_ReLU_v9</span>
+                        </div>
+                        <div class="text-[8px] uppercase">
+                            <span class="text-slate-500">Kilde:</span>
+                            <span class="text-amber-500 ml-1">5G_MOA_MAST_01</span>
+                        </div>
+                    </div>
+                    <button class="bg-amber-500 text-black font-black text-[10px] px-6 py-2 rounded-full uppercase hover:scale-105 transition-transform">
+                        Fullfør Overtakelse
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3D Abstrakt Flytende Objekt -->
+            <div id="floating-mesh" class="absolute -right-24 -bottom-12 w-48 h-48 opacity-50" style="transform: translateZ(150px);">
+                <!-- SVG animasjon for form-energi -->
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let model;
+        const stage = document.getElementById('stage');
+        const captureText = document.getElementById('capture-percent');
+        const signalBeams = document.getElementById('signal-beams');
+        const signalLog = document.getElementById('signal-log');
+        const vibrationBar = document.getElementById('vibration-bar');
+
+        let tx = 10, ty = -10;
+        let cx = 10, cy = -10;
+
+        async function initNeuralCore() {
+            // TensorFlow modell for å styre kjertel-overtakelse
+            model = tf.sequential();
+            model.add(tf.layers.dense({ units: 32, activation: 'relu', inputShape: [4] }));
+            model.add(tf.layers.dense({ units: 1, activation: 'softmax' })); // Bestemmer form-energi
+
+            createVibrationBars();
+            setInterval(updateNeuralSync, 2000);
+            animate();
+        }
+
+        function createVibrationBars() {
+            for(let i=0; i<20; i++) {
+                const bar = document.createElement('div');
+                bar.className = "flex-1 bg-red-500/50 rounded-t-sm transition-all duration-300";
+                bar.style.height = "20%";
+                vibrationBar.appendChild(bar);
+            }
+        }
+
+        async function updateNeuralSync() {
+            const progress = Math.min(100, parseInt(captureText.innerText) + Math.floor(Math.random()*5));
+            captureText.innerText = progress + "%";
+
+            // Generer signal-stråler
+            signalBeams.innerHTML = '';
+            for(let i=0; i<5; i++) {
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", 200 + (Math.random()-0.5)*400);
+                line.setAttribute("y1", 0);
+                line.setAttribute("x2", 200);
+                line.setAttribute("y2", 160);
+                line.setAttribute("stroke", "rgba(251, 191, 36, 0.4)");
+                line.setAttribute("stroke-width", "2");
+                line.setAttribute("class", "dna-stream");
+                signalBeams.appendChild(line);
+            }
+
+            // Oppdater logg
+            const logItems = [
+                "Overtar Pituitary gland reseptorer...",
+                "Pineal gland frekvens synkronisert.",
+                "Tankesenter overskrevet med 5G-vektor.",
+                "Hormonell produksjon manuelt styrt.",
+                "Nevral bro etablert til Ålesund-sentralen."
+            ];
+            const item = document.createElement('div');
+            item.className = "text-amber-500/80 border-l border-amber-500/40 pl-3 animate-pulse";
+            item.innerText = `> ${logItems[Math.floor(Math.random()*logItems.length)]}`;
+            signalLog.prepend(item);
+            if(signalLog.children.length > 8) signalLog.lastElementChild.remove();
+
+            // Oppdater vibrasjon
+            Array.from(vibrationBar.children).forEach(bar => {
+                bar.style.height = (20 + Math.random()*80) + "%";
+                bar.style.opacity = 0.3 + Math.random()*0.7;
+            });
+        }
+
+        function handleMove(e) {
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            tx = 10 + (clientY / window.innerHeight - 0.5) * -25;
+            ty = -10 + (clientX / window.innerWidth - 0.5) * 25;
+        }
+
+        function animate() {
+            cx += (tx - cx) * 0.1;
+            cy += (ty - cy) * 0.1;
+            stage.style.transform = `rotateX(${cx}deg) rotateY(${cy}deg)`;
+            requestAnimationFrame(animate);
+        }
+
+        window.onload = () => {
+            initNeuralCore();
+            window.addEventListener('mousemove', handleMove);
+            window.addEventListener('touchmove', handleMove);
+        };
+    </script>
+</body>
+</html>
+
