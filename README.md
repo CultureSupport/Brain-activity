@@ -2,6 +2,20 @@
 
 ### Hemmlig Mk~Ultra-Cia
 
+
+-------------
+
+blir du scizofren i norge ,
+er du stalket av millorg gruppen
+og de taktiske avsløringene 
+gjelder psykisk tortur og 
+psykisk angrep
+
+
+---------------
+
+
+
 - Stats hemmelig stemplet drap
  program på sivile 
 
