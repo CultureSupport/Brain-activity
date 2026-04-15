@@ -95,7 +95,7 @@ mennesker døde og psykisk
 
     ----------
 
-    dette nettet er satt opp til
+    - dette nettet er satt opp til
     og ødlegge deg og få deg
     psykisk terrorist eller
     en farlig person for samfunnet
@@ -107,38 +107,38 @@ mennesker døde og psykisk
       gjør handlinger som drap
       og terror mot menneske samfunnet
 
-      - du gjør ikke dette av deg
+    - du gjør ikke dette av deg
         selv
 
-        - du blir manipulert til
+    - du blir manipulert til
           ha dekning historie
 
-          - etterpå blir du
-            like farlig manipulert
+    - etterpå blir du
+     like farlig manipulert
             som terrorist
             til og skade
             personer i rundt
             deg
 
-            - millorg har
+ - millorg har
               en ambisjon
               og drepe deg
               via hemmelig stats ordrer
 
-              - militær kommunisere hemmelig med hjernen og får deg
-              - til begå farlige
+-------------
+
+
+- militær kommunisere hemmelig med hjernen og får deg
+-  til begå farlige
                 handlinger
-                - radikale handlinger
-                - psykisk tortur
-                - ting du egentlig
-                  ikke ville begå
-                  som drap og onsinnete
-                  planer
+- radikale handlinger
+- psykisk tortur
+-  ting du egentlig
+- ikke ville begå
+- som drap og onsinnete planer
 
 - skade omdømmet ditt i skjul og gjøre deg agressiv og farlig
-                    ugjenkjennelig
-                    og psykotisk
-                    drapsmann
+-  ugjenkjennelig og psykotisk rapsmann
 
  - sånn at de finnes skjulte
    agendaer for ødelegge deg
