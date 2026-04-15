@@ -10,7 +10,9 @@ er scizofrene
 viser ondsinnet teknologi med 
 nevrale hensikter og
 destruktiv forandre personer
-ødelagte og hatet 
+ødelagte og hatet innenfor
+nettverket 5G base stasjon
+området
 
 ----------
 
